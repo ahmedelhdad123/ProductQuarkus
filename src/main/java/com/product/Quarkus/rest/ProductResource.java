@@ -18,32 +18,30 @@ public class ProductResource {
     ProductService productService;
 
     @GET
-    @Path("all")
     public List<Product> getProducts() {
         return productService.findAll();
     }
 
     @GET
-    @Path("findById/{id}")
+    @Path("/{id}")
     public Product getProduct(@PathParam("id") int id) {
         return productService.findById(id);
     }
 
 
     @POST
-    @Path("add")
     public void addProduct(@Valid Product product) {
         productService.save(product);
     }
 
     @PUT
-    @Path("update/{id}")
+    @Path("/{id}")
     public void updateProduct(@PathParam("id") int id, Product product) {
         productService.updateProduct(id, product);
     }
 
     @DELETE
-    @Path("delete/{id}")
+    @Path("/{id}")
     public void deleteProduct(@PathParam("id") int id) {
         productService.deleteById(id);
     }
